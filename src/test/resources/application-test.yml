@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yonsei_custom
+    username: root
+    password: onoffmix
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 100
+    open-in-view: false
+
+server:
+  port: 8090
+  tomcat:
+    accesslog:
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+    basedir: C:\onoffmix\yonsei-custom\log\tomcat
+
+aws:
+  ses:
+    access-key: ''
+    secret-key: ''
+  s3:
+    access-key: ''
+    secret-key: ''
+
+logging:
+  file:
+    path: C:\onoffmix\yonsei-custom\log\application
+  level:
+    com.onoffmix: warn
+    org.hibernate:
+      SQL: warn
+      type.descriptor.sql.BasicBinder: warn
+  logback:
+    rollingpolicy:
+      max-history: 7
+
+file:
+  dir:
+    local: 'C:\onoffmix\yonsei-custom\file'
+    s3: C:\onoffmix\yonsei-custom\file
+    vimeo: C:\onoffmix\yonsei-custom\file

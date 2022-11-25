@@ -1,11 +1,3 @@
-server:
-  port: 8090
-  tomcat:
-    accesslog:
-      enabled: true
-      file-date-format: .yyyy-MM-dd
-    basedir: C:\onoffmix\yonsei-custom\log\tomcat
-
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -21,6 +13,14 @@ spring:
         format_sql: true
         default_batch_fetch_size: 100
     open-in-view: false
+
+server:
+  port: 8090
+  tomcat:
+    accesslog:
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+    basedir: C:\onoffmix\yonsei-custom\log\tomcat
 
 aws:
   ses:

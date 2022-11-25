@@ -5,7 +5,7 @@ public enum FileType {
     USER_PROFILE("user/profile"),
     VIDEO_THUMBNAIL("video/thumbnail"),
     COURSE_THUMBNAIL("course/thumbnail"),
-    ;
+    NONE("");
 
     private String dir;
 

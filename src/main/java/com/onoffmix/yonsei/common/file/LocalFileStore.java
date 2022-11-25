@@ -1,11 +1,15 @@
 package com.onoffmix.yonsei.common.file;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.UUID;
 
+@Qualifier(value = "LocalFileStore")
+@Component
 public class LocalFileStore implements FileStore {
 
     @Value("${file.dir.local}")
@@ -40,7 +44,7 @@ public class LocalFileStore implements FileStore {
     }
 
     public String getFullPath(String filepath) {
-        return rootPath + "/" +  filepath;
+        return rootPath + "/" + filepath;
     }
 
     @Override
