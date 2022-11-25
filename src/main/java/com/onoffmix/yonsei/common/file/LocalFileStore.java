@@ -3,9 +3,14 @@ package com.onoffmix.yonsei.common.file;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.UUID;
 
 @Qualifier(value = "LocalFileStore")
@@ -43,17 +48,26 @@ public class LocalFileStore implements FileStore {
         return fileName.substring(index + 1);
     }
 
-    public String getFullPath(String filepath) {
+    @Override
+    public Resource download(String path) throws MalformedURLException {
+        String fullPath = getFullPath(path);
+
+        return new UrlResource("file:" + fullPath);
+    }
+
+    @Override
+    public boolean delete(String path) {
+        String fullPath = getFullPath(path);
+
+        try {
+            Files.delete(Paths.get(fullPath));
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
+    private String getFullPath(String filepath) {
         return rootPath + "/" + filepath;
-    }
-
-    @Override
-    public Resource download(String fileName) {
-        return null;
-    }
-
-    @Override
-    public boolean delete(String fileName) {
-        return false;
     }
 }

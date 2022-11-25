@@ -14,25 +14,37 @@ spring:
         default_batch_fetch_size: 100
     open-in-view: false
 
+cloud:
+  aws:
+    credentials:
+      access-key:
+      secret-key:
+    s3:
+      bucket: mylevelupbuckets3
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
 server:
   port: 8090
   tomcat:
     accesslog:
       enabled: true
       file-date-format: .yyyy-MM-dd
-    basedir: C:\onoffmix\yonsei-custom\log\tomcat
+    basedir: C:/onoffmix/yonsei-custom/log/tomcat
 
 aws:
   ses:
     access-key: ''
     secret-key: ''
   s3:
-    access-key: ''
-    secret-key: ''
+    access-key:
+    secret-key:
 
 logging:
   file:
-    path: C:\onoffmix\yonsei-custom\log\application
+    path: C:/onoffmix/yonsei-custom/log/application
   level:
     com.onoffmix: warn
     org.hibernate:
@@ -44,6 +56,6 @@ logging:
 
 file:
   dir:
-    local: 'C:\onoffmix\yonsei-custom\file'
-    s3: C:\onoffmix\yonsei-custom\file
-    vimeo: C:\onoffmix\yonsei-custom\file
+    local: 'C:/onoffmix/yonsei-custom/file'
+    s3: C:/onoffmix/yonsei-custom/file
+    vimeo: C:/onoffmix/yonsei-custom/file

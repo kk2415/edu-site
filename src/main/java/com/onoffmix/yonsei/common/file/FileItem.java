@@ -67,7 +67,7 @@ public class FileItem {
     }
 
     public InputStream getInputStream() {
-        return new ByteArrayInputStream(this.contents);
+        return new ByteArrayInputStream(this.contents, 0, contents.length);
     }
 
     public void write(OutputStream out) throws IOException {
